@@ -7,19 +7,22 @@
             android:title="Log in"/>
     </group>
 
+    <group android:id="@+id/group_2">
+        <item android:id="@+id/new_request"
+            android:icon="@drawable/round_add_circle_24"
+            android:title="New request"/>
 
-    <item android:id="@+id/new_request"
-        android:icon="@drawable/round_add_circle_24"
-        android:title="New request"/>
+        <item android:id="@+id/active_requests"
+            android:icon="@drawable/round_hourglass_empty_24"
+            android:title="Active request"/>
 
-    <item android:id="@+id/active_requests"
-        android:icon="@drawable/round_hourglass_empty_24"
-        android:title="Active request"/>
+        <item android:id="@+id/previous_requests"
+            android:icon="@drawable/round_history_24"
+            android:title="Previous requests"/>
+    </group>
 
-    <item android:id="@+id/previous_requests"
-        android:icon="@drawable/round_history_24"
-        android:title="Previous requests"/>
 
+    <group android:id="@+id/group_3">
     <item android:id="@+id/funded_by"
         android:icon="@drawable/round_attach_money_24"
         android:title="Funded by you"/>
@@ -28,15 +31,23 @@
         android:icon="@drawable/round_favorite_24"
         android:title="Backed by you"/>
 
+    </group>
+
+    <group android:id="@+id/group_4">
+
     <item android:id="@+id/message"
         android:icon="@drawable/round_message_24"
         android:title="Messages"/>
 
+    </group>
+
+
+    <group android:id="@+id/group_5">
     <item android:id="@+id/settings"
         android:icon="@drawable/round_settings_24"
         android:title="Settings"
         />
-
+    </group>
 
 
 </menu>
