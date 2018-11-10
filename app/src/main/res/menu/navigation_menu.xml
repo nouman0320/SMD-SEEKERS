@@ -1,9 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/nav_account" android:title="my account"/>
+    <group android:id="@+id/group_1">
+        <item android:id="@+id/login"
+            android:icon="@drawable/round_account_circle_24"
+            android:title="Log in"/>
+    </group>
 
-    <item android:id="@+id/nav_settings" android:title="settings"/>
 
-    <item android:id="@+id/nav_logout" android:title="logout"/>
+    <item android:id="@+id/new_request"
+        android:icon="@drawable/round_add_circle_24"
+        android:title="New request"/>
+
+    <item android:id="@+id/active_requests"
+        android:icon="@drawable/round_hourglass_empty_24"
+        android:title="Active request"/>
+
+    <item android:id="@+id/previous_requests"
+        android:icon="@drawable/round_history_24"
+        android:title="Previous requests"/>
+
+    <item android:id="@+id/funded_by"
+        android:icon="@drawable/round_attach_money_24"
+        android:title="Funded by you"/>
+
+    <item android:id="@+id/backed_by"
+        android:icon="@drawable/round_favorite_24"
+        android:title="Backed by you"/>
+
+    <item android:id="@+id/message"
+        android:icon="@drawable/round_message_24"
+        android:title="Messages"/>
+
+    <item android:id="@+id/settings"
+        android:icon="@drawable/round_settings_24"
+        android:title="Settings"
+        />
+
+
+
 </menu>
