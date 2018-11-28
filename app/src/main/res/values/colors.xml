@@ -6,4 +6,5 @@
 
 
     <color name="seekersTheme">#166350</color>
+    <color name="seekersThemeDark">#105141</color>
 </resources>
