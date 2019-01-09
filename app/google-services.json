@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "951934651526",
+    "firebase_url": "https://seekers-d3bcb.firebaseio.com",
+    "project_id": "seekers-d3bcb",
+    "storage_bucket": "seekers-d3bcb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951934651526:android:b7732752289de88b",
+        "android_client_info": {
+          "package_name": "pk.edu.nu.smd.seekers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "951934651526-3s34mp7dvd9t8da0i2b26jm7en7nq97k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pk.edu.nu.smd.seekers",
+            "certificate_hash": "97b4898a1348541cbada60ef6a7666b170ab52f9"
+          }
+        },
+        {
+          "client_id": "951934651526-cmfvumrj0dcetnpeq5n13bsf1bji6rtj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjV4qlz3w86jvR8HqN6KJPUy5RYYKcaiE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "951934651526-cmfvumrj0dcetnpeq5n13bsf1bji6rtj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
