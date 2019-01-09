@@ -2,7 +2,9 @@ package pk.edu.nu.smd.seekers;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,9 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.PostCa
         PostCardList = postCardList;
     }
 
+
+
+
     @NonNull
     @Override
     public PostCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,6 +43,15 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.PostCa
         PostCard card = PostCardList.get(position);
 
         holder.username_textview.setText(card.getUsername());
+
+        holder.card_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.getContext().startActivity(new
+                        Intent(v.getContext(),PostDetailViewActivity.class));
+            }
+        });
+
     }
 
     @Override
@@ -49,12 +63,19 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.PostCa
 
         TextView username_textview;
 
+        CardView card_view;
+
         public PostCardViewHolder(View itemView) {
             super(itemView);
 
             username_textview = itemView.findViewById(R.id.username_textview);
+            card_view = itemView.findViewById(R.id.card_view);
 
         }
+
+
     }
+
+
 
 }
