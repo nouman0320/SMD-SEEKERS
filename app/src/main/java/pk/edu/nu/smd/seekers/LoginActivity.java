@@ -177,6 +177,7 @@ public class LoginActivity extends AppCompatActivity {
                                     editor.putString("gender", user.getGender());
                                     editor.putString("id", user.getUserID());
                                     editor.putString("email", user.getEmail());
+                                    editor.putInt("balance", user.getBalance());
                                     editor.apply();
 
                                     Intent i = new Intent(LoginActivity.this, MainActivity.class);

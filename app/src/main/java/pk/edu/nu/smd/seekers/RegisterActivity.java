@@ -135,7 +135,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if(task.isSuccessful()){
 
                         final String id = databaseUsers.push().getKey();
-                        User user = new User(id, fullname, email, userGender, password);
+                        User user = new User(id, fullname, email, userGender, password, 50000);
 
                         try{
                             databaseUsers.child(id).setValue(user).addOnSuccessListener(new OnSuccessListener<Object>() {
@@ -151,6 +151,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     editor.putString("gender", userGender);
                                     editor.putString("id", id);
                                     editor.putString("email", email);
+                                    editor.putInt("balance", 50000);
                                     editor.apply();
 
                                     Intent i = new Intent(RegisterActivity.this, MainActivity.class);

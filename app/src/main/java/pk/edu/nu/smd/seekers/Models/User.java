@@ -7,6 +7,7 @@ public class User {
     String email;
     String gender;
     String password;
+    int balance;
 
     public String getUserID() {
         return userID;
@@ -20,13 +21,21 @@ public class User {
 
     }
 
-    public User(String userID, String fullname, String email, String gender, String password) {
-
+    public User(String userID, String fullname, String email, String gender, String password, int balance) {
         this.userID = userID;
         this.fullname = fullname;
         this.email = email;
         this.gender = gender;
         this.password = password;
+        this.balance = balance;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 
     public String getFullname() {

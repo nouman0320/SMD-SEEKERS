@@ -72,11 +72,13 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/fast"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.518"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            fancy:srcCompat="@android:color/darker_gray" />
+            app:srcCompat="@drawable/fast"
+             />
 
         <TextView
             android:id="@+id/textView16"
@@ -88,6 +90,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
             android:inputType="textMultiLine|textNoSuggestions"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:text="Post Title"
             android:textSize="18sp"
             android:textStyle="bold"

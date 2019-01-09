@@ -24,8 +24,18 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import pk.edu.nu.smd.seekers.Models.Post;
+import pk.edu.nu.smd.seekers.Models.User;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
@@ -36,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements
     PostCardAdapter adapter;
 
     List<PostCard> postCardList;
+    ArrayList<Post> postList;
 
     boolean loginStatus = false;
 
@@ -69,10 +80,38 @@ public class MainActivity extends AppCompatActivity implements
 
     ConstraintLayout LoginRegister;
 
+    FirebaseAuth mAuth;
+    DatabaseReference databasePosts;
+
+    ProgressDialog feedProgressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mAuth = FirebaseAuth.getInstance();
+        databasePosts = FirebaseDatabase.getInstance().getReference("posts");
+
+        feedProgressDialog = new ProgressDialog(this);
+
+        postList = getPostFeed();
+
         setContentView(R.layout.activity_main);
+
+        postCardList = new ArrayList<>();
+
+        recyclerView = findViewById(R.id.postcard_recyclerview);
+        recyclerView.setHasFixedSize(true);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter = new PostCardAdapter(this, postList);
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);
+
+
+
+
 
         LoginRegister = findViewById(R.id.constraintLayoutLoginRegister);
 
@@ -116,22 +155,6 @@ public class MainActivity extends AppCompatActivity implements
 
 
 
-        postCardList = new ArrayList<>();
-
-        recyclerView = findViewById(R.id.postcard_recyclerview);
-        recyclerView.setHasFixedSize(true);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        postCardList.add(new PostCard("Nouman Arshad"));
-        postCardList.add(new PostCard("Muhammad Shahnawaz"));
-        postCardList.add(new PostCard("Zain Shahid"));
-        postCardList.add(new PostCard("user4"));
-        postCardList.add(new PostCard("user5"));
-
-        adapter = new PostCardAdapter(this, postCardList);
-        recyclerView.setAdapter(adapter);
-
 
         notification_btn = findViewById(R.id.notification_btn);
         search_btn = findViewById(R.id.search_btn);
@@ -168,6 +191,39 @@ public class MainActivity extends AppCompatActivity implements
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    }
+
+
+    ArrayList<Post> getPostFeed(){
+        final ArrayList<Post> tempPostArrayList = new ArrayList<>();
+
+        feedProgressDialog.setMessage("Getting latest feed...");
+        feedProgressDialog.show();
+
+
+        databasePosts.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                    Post post = postSnapshot.getValue(Post.class);
+                    Log.d("post",post.getPostTitle());
+                    tempPostArrayList.add(post);
+                }
+
+                feedProgressDialog.dismiss();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                feedProgressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        return tempPostArrayList;
     }
 
     @Override
@@ -233,6 +289,11 @@ public class MainActivity extends AppCompatActivity implements
         if(loggedIn == true){
             SharedPreferences userPrefs = getSharedPreferences("user_details", MODE_PRIVATE);
             String user_fullname = userPrefs.getString("fullname", "User");
+            int balance = userPrefs.getInt("balance", 50000);
+
+            String balance_string = "Rs. " + balance;
+            balance_tv.setText(balance_string);
+
             Log.d("login_status", Boolean.toString(loggedIn));
             Log.d("user", user_fullname);
             profileButton.setTitle(user_fullname);

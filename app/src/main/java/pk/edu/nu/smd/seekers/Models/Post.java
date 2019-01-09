@@ -1,6 +1,9 @@
 package pk.edu.nu.smd.seekers.Models;
 
-public class Post {
+import java.io.Serializable;
+
+public class Post implements Serializable {
+    String postID;
     String postTitle;
     String userID;
     String userName;
@@ -11,10 +14,12 @@ public class Post {
     int days;
     int backedBy;
 
+
     public Post() {
     }
 
-    public Post(String postTitle, String userID, String userName, String postDescription, String location, int totalAmount, int raisedAmount, int days, int backedBy) {
+    public Post(String postID, String postTitle, String userID, String userName, String postDescription, String location, int totalAmount, int raisedAmount, int days, int backedBy) {
+        this.postID = postID;
         this.postTitle = postTitle;
         this.userID = userID;
         this.userName = userName;
@@ -24,6 +29,14 @@ public class Post {
         this.raisedAmount = raisedAmount;
         this.days = days;
         this.backedBy = backedBy;
+    }
+
+    public String getPostID() {
+        return postID;
+    }
+
+    public void setPostID(String postID) {
+        this.postID = postID;
     }
 
     public String getUserName() {
